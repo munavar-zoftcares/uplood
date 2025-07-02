@@ -1,0 +1,1 @@
+{"version":2,"languages":{"nodejs-npm":{"specfileHash":"4a29e5d42d5352713cc81770cf948926","lockfileHash":"05e9a4524c0c8155368884cfcf8874f5","guessedImports":["express","@supabase/supabase-js","jsonwebtoken","cors"],"guessedImportsHash":"84b50164bc346f856ca67fe04c7da568"}}}
