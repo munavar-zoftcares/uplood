@@ -8,6 +8,7 @@ import userRouter from './routes/user.routes';
 import multer from "multer"
 import * as xlsx from "xlsx";
 import fs from 'fs';
+import path from 'path';
 const app = express();
 
 // Globale Middlewares
@@ -27,14 +28,14 @@ app.get("/", (_req, res) => {
 // const upl = express.Router();
 
 
-const uploadDir = 'uploads';
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir);
-}
+// const uploadDir = 'uploads';
+// if (!fs.existsSync(uploadDir)) {
+//   fs.mkdirSync(uploadDir);
+// }
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/");
+    cb(null, path.join(__dirname, '../uploads'));
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + "-" + file.originalname);
