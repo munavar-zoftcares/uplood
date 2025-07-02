@@ -16,6 +16,10 @@ app.use('/api/health', healthRouter);
 app.use('/api/user', userRouter);
 
 // Nur lokal: Listener starten, wenn das Skript direkt ausgeführt wird
+app.get("/", (_req, res) => {
+  res.send("Hello from Express!");
+});
+
 if (require.main === module) {
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {
