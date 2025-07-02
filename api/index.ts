@@ -79,8 +79,8 @@ app.post("/upload", upload.single("file"), (req, res) => {
 
         result.push({
           id: id++,
-          a: a.toLowerCase(),
-          b: b,
+          x_axis: a.toLowerCase(),
+          y_axis: b,
           score: (scoreValue * 100).toFixed(2) + '%',
           status: status
         });
