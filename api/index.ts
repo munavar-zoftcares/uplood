@@ -61,8 +61,8 @@ app.post("/upload", upload.single("file"), (req, res) => {
     const nonEmptyRows: any = sheetData.filter((row: any) =>
       row.some((cell: string | null) => cell !== null && cell !== '')
     );
-    const headers = nonEmptyRows[0].slice(2);
-    const statusRow = nonEmptyRows[1].slice(2);
+    const headers = nonEmptyRows[1].slice(2);
+    const statusRow = nonEmptyRows[2].slice(2);
     const result = [];
 
     let id = 1;
