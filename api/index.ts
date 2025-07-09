@@ -88,11 +88,11 @@ console.log(`Empty columns from start: ${emptyStartColumns}`);
          console.log("aaaaa",a,"type",typeof a)
       if (!a) continue;
 
-      for (let j = 0; j < headers.length; j++) {
+      for (let j = 0-(emptyStartColumns+1); j < headers.length; j++) {
         const b = headers[j];
         if (!b) continue;
 
-        const scoreValue = nonEmptyRows[i][(j + 2)-(emptyStartColumns+1)];
+        const scoreValue = nonEmptyRows[i][j + 2];
         const status = statusRow[j];
        
         result.push({
