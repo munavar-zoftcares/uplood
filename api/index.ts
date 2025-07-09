@@ -76,8 +76,8 @@ for (let col = 0; col < maxCols; col++) {
 
 console.log(`Empty columns from start: ${emptyStartColumns}`);
     //.......
-    const headers = nonEmptyRows[1].slice(2);
-    const statusRow = nonEmptyRows[2].slice(2);
+    const headers = nonEmptyRows[1].slice(emptyStartColumns+1);
+    const statusRow = nonEmptyRows[2].slice(emptyStartColumns+1);
 
     const result = [];
 
@@ -92,7 +92,7 @@ console.log(`Empty columns from start: ${emptyStartColumns}`);
         const b = headers[j];
         if (!b) continue;
 
-        const scoreValue = nonEmptyRows[i][j + 2];
+        const scoreValue = nonEmptyRows[i][(j + 2)-(emptyStartColumns+1)];
         const status = statusRow[j];
        
         result.push({
