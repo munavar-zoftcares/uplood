@@ -61,13 +61,31 @@ app.post("/upload", upload.single("file"), (req, res) => {
     const nonEmptyRows: any = sheetData.filter((row: any) =>
       row.some((cell: string | null) => cell !== null && cell !== '')
     );
+    //.......
+    let emptyStartColumns = 0;
+const maxCols = Math.max(...nonEmptyRows.map((row: string | any[]) => row.length));
+
+for (let col = 0; col < maxCols; col++) {
+  const isColumnEmpty = nonEmptyRows.every((row: null[]) => row[col] === null);
+  if (isColumnEmpty) {
+    emptyStartColumns++;
+  } else {
+    break; // stop counting after the first non-empty column
+  }
+}
+
+console.log(`Empty columns from start: ${emptyStartColumns}`);
+    //.......
     const headers = nonEmptyRows[1].slice(2);
     const statusRow = nonEmptyRows[2].slice(2);
+
     const result = [];
 
     let id = 1;
     for (let i = 2; i < nonEmptyRows.length; i++) {
-      const a = nonEmptyRows[i][1];
+   
+      const a = nonEmptyRows[i][emptyStartColumns];
+         console.log("aaaaa",a,"type",typeof a)
       if (!a) continue;
 
       for (let j = 0; j < headers.length; j++) {
@@ -76,7 +94,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
 
         const scoreValue = nonEmptyRows[i][j + 2];
         const status = statusRow[j];
-
+       
         result.push({
           id: id++,
           x_axis: a.toLowerCase(),
@@ -86,7 +104,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
         });
       }
     }
-    console.log(result);
+    // console.log(result);
     res.json(result)
   } catch (err) {
     console.error(err);
