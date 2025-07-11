@@ -85,14 +85,15 @@ console.log(`Empty columns from start: ${emptyStartColumns}`);
     for (let i = 2; i < nonEmptyRows.length; i++) {
    
       const a = nonEmptyRows[i][emptyStartColumns];
-         console.log("aaaaa",a,"type",typeof a)
+        //  console.log("aaaaa",a,"type",typeof a)
       if (!a) continue;
 
-      for (let j = 0-(emptyStartColumns+1); j < headers.length; j++) {
+      for (let j =0; j < headers.length; j++) {
         const b = headers[j];
         if (!b) continue;
 
-        const scoreValue = nonEmptyRows[i][j + 2];
+        const scoreValue = nonEmptyRows[i][j+1+(emptyStartColumns)];
+        // console.log(nonEmptyRows[3])
         const status = statusRow[j];
        
         result.push({
